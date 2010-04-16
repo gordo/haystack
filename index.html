@@ -32,28 +32,28 @@
 	<input type="text" id="searchinput" placeholder="Start typing to filter..." value="" /><label for="searchinput" id="souplabel">&larr; Start typing to filter...</label>
 
 	<ul id="listings">
-		<li style="display:block;">Alabama</li>
-		<li style="display:block;">Alaska</li>
-		<li style="display:block;">Arizona</li>
-		<li style="display:block;">Arkansas</li>
-		<li style="display:block;">California</li>
-		<li style="display:block;">Colorado</li>
-		<li style="display:block;">Connecticut</li>
-		<li style="display:block;">Illinois</li>
-		<li style="display:block;">Indiana</li>
-		<li style="display:block;">Iowa</li>
-		<li style="display:block;">Maine</li>
-		<li style="display:block;">Maryland</li>
-		<li style="display:block;">Massachusetts</li>
-		<li style="display:block;">Minnesota</li>
-		<li style="display:block;">Mississippi</li>
-		<li style="display:block;">Missouri</li>
-		<li style="display:block;">Montana</li>
-		<li style="display:block;">Nebraska</li>
-		<li style="display:block;">Nevada</li>
-		<li style="display:block;">New Hampshire</li>
-		<li style="display:block;">New Jersey</li>
-		<li style="display:block;">New York</li>
+		<li>Alabama</li>
+		<li>Alaska</li>
+		<li>Arizona</li>
+		<li>Arkansas</li>
+		<li>California</li>
+		<li>Colorado</li>
+		<li>Connecticut</li>
+		<li>Illinois</li>
+		<li>Indiana</li>
+		<li>Iowa</li>
+		<li>Maine</li>
+		<li>Maryland</li>
+		<li>Massachusetts</li>
+		<li>Minnesota</li>
+		<li>Mississippi</li>
+		<li>Missouri</li>
+		<li>Montana</li>
+		<li>Nebraska</li>
+		<li>Nevada</li>
+		<li>New Hampshire</li>
+		<li>New Jersey</li>
+		<li>New York</li>
 	</ul>
 
 	<div id="sosumi">2010. <a href="http://www.monstercyb.org/gordon/lab">Monstercyb.org</a>. A part of the <a href="http://www.ocf.berkeley.edu/~gordeon">GordeonBleu</a> network.</div>
@@ -109,18 +109,18 @@
 							//if array isn't null (if there are matches), show this title:
 							//unhide this title's corresponding parent element, in this case an li
 							//use an object with properties for this, perhaps?
-							liArray[j].style.display = "block";
+							liArray[j].className = "crouchingtiger";
 						}
 						else {
 							//otherwise, hide this title's element, and let's move on to the next
-							liArray[j].style.display = "none";
+							liArray[j].className = "hiddendragon";
 						}
 					}
 				}
 				else {
 					//if input field is empty, unhide everything
 					for (var k=0; k<liArrayLength; k++) {
-						liArray[k].style.display = "block";
+						liArray[k].className = "crouchingtiger";
 					}
 				}
 			}
