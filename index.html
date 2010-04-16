@@ -12,7 +12,7 @@
 		a:hover {color:#ff5c80; text-decoration:line-through;}
 
 		input[type="text"] {padding:0.3em; background:url("../../formfieldbkgd.gif") no-repeat scroll top left transparent; border-radius:0.5em; -moz-border-radius:0.5em; -webkit-border-radius:0.5em; border:1px solid #eee;}
-		
+
 		#listings {margin-top:1em;}
 		#listings li {list-style-type:none;}
 
@@ -40,7 +40,7 @@
 		<li style="display:block;">Colorado</li>
 		<li style="display:block;">Connecticut</li>
 		<li style="display:block;">Illinois</li>
-		<li style="display:block;">Indiana</li>		
+		<li style="display:block;">Indiana</li>
 		<li style="display:block;">Iowa</li>
 		<li style="display:block;">Maine</li>
 		<li style="display:block;">Maryland</li>
@@ -91,7 +91,7 @@
 
 					//check all titles for matches
 					for (var j=0; j<titlesArrayLength; j++) {
-						
+
 						//assign next title as next string to match against input
 						strToMatch = titlesArray[j];
 
@@ -113,9 +113,7 @@
 				else {
 					//if input field is empty, unhide everything
 					for (var k=0; k<liArrayLength; k++) {
-						if (liArray[k].style.display = "none") {
-							liArray[k].style.display = "block";						
-						}
+						liArray[k].style.display = "block";
 					}
 				}
 			}
@@ -133,7 +131,7 @@
 				var p = document.createElement("input");
 				return "placeholder" in p;
 			}
-			
+
 			if (!isPlaceholderSupported()) {
 				document.getElementById("souplabel").className = "crouchingtigress";
 			}
