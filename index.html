@@ -82,12 +82,19 @@
 					var e = window.event;
 				}
 
+				searchinputvalue = searchinput.value;
 
-				if (searchinput.value != "") {
+				if (searchinputvalue != "") {
 					//match current search input value with any of the titles
-					searchinputvalue = searchinput.value;
-					
-					var regexp = new RegExp(searchinputvalue);
+
+					if (searchinputvalue.length == 1) {
+						//if single-letter input, match from beginning only
+						var regexp = new RegExp("^" + searchinputvalue, "i");
+					}
+					else {
+						//i flag in regex to make case insensitive
+						var regexp = new RegExp(searchinputvalue, "i");
+					}
 
 					//check all titles for matches
 					for (var j=0; j<titlesArrayLength; j++) {
