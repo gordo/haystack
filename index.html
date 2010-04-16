@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale:0.25, maximum-scale:1.6, user-scalable=yes;" />
+	<meta name="author" content="Gordon Mei" />
+	<title>Filter As You Search - Studio Gordon Mei - Lab</title>
+	<style type="text/css">
+		* {margin:0; padding:0; font:normal 14pt "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif; font-weight:300;}
+		body {margin:2em 5em;}
+		a:link, a:visited, a:focus, a:active {color:#009aff;}
+		a:hover {color:#ff5c80; text-decoration:line-through;}
+
+		input[type="text"] {padding:0.3em; background:url("../../formfieldbkgd.gif") no-repeat scroll top left transparent; border-radius:0.5em; -moz-border-radius:0.5em; -webkit-border-radius:0.5em; border:1px solid #eee;}
+		
+		#listings {margin-top:1em;}
+		#listings li {list-style-type:none;}
+
+		label {margin-left:0.5em; display:none;}
+		.crouchingtigress {display:inline;}
+		.crouchingtiger {display:block;}
+		.hiddendragon {display:none;}
+
+		#sosumi {margin:1em 0; font-size:10pt;}
+		#sosumi a {font-size:10pt;}
+	</style>
+
+	<link rel="shortcut icon" href="../../favico.png" type="image/png" />
+</head>
+<body>
+
+	<input type="text" id="searchinput" placeholder="Start typing to filter..." value="" /><label for="searchinput" id="souplabel">&larr; Start typing to filter...</label>
+
+	<ul id="listings">
+		<li style="display:block;">Alabama</li>
+		<li style="display:block;">Alaska</li>
+		<li style="display:block;">Arizona</li>
+		<li style="display:block;">Arkansas</li>
+		<li style="display:block;">California</li>
+		<li style="display:block;">Colorado</li>
+		<li style="display:block;">Connecticut</li>
+		<li style="display:block;">Illinois</li>
+		<li style="display:block;">Indiana</li>		
+		<li style="display:block;">Iowa</li>
+		<li style="display:block;">Maine</li>
+		<li style="display:block;">Maryland</li>
+		<li style="display:block;">Massachusetts</li>
+		<li style="display:block;">Minnesota</li>
+		<li style="display:block;">Mississippi</li>
+		<li style="display:block;">Missouri</li>
+		<li style="display:block;">Montana</li>
+		<li style="display:block;">Nebraska</li>
+		<li style="display:block;">Nevada</li>
+		<li style="display:block;">New Hampshire</li>
+		<li style="display:block;">New Jersey</li>
+		<li style="display:block;">New York</li>
+	</ul>
+
+	<div id="sosumi">2010. <a href="http://www.monstercyb.org/gordon/lab">Monstercyb.org</a>. A part of the <a href="http://www.ocf.berkeley.edu/~gordeon">GordeonBleu</a> network.</div>
+
+	<script type="text/javascript">
+		(function() {
+
+			var searchinput = document.getElementById("searchinput");
+			var listings = document.getElementById("listings");
+			var liArray = listings.getElementsByTagName("li");
+			var liArrayLength = liArray.length;
+			var titlesArray = [];
+			var searchinputvalue;
+			var strToMatch = "";
+
+			for (var i=0; i<liArrayLength; i++) {
+				titlesArray[i] = liArray[i].innerHTML;
+			}
+
+			var titlesArrayLength = titlesArray.length;
+
+
+			function updateResults(e) {
+				//some IE love
+				if (!e) {
+					var e = window.event;
+				}
+
+
+				if (searchinput.value != "") {
+					//match current search input value with any of the titles
+					searchinputvalue = searchinput.value;
+					
+					var regexp = new RegExp(searchinputvalue);
+
+					//check all titles for matches
+					for (var j=0; j<titlesArrayLength; j++) {
+						
+						//assign next title as next string to match against input
+						strToMatch = titlesArray[j];
+
+						//create array of matches in current title, but only using this as a faux boolean
+						matchesArray = strToMatch.match(regexp);
+
+						if (matchesArray != null) {
+							//if array isn't null (if there are matches), show this title:
+							//unhide this title's corresponding parent element, in this case an li
+							//use an object with properties for this, perhaps?
+							liArray[j].style.display = "block";
+						}
+						else {
+							//otherwise, hide this title's element, and let's move on to the next
+							liArray[j].style.display = "none";
+						}
+					}
+				}
+				else {
+					//if input field is empty, unhide everything
+					for (var k=0; k<liArrayLength; k++) {
+						if (liArray[k].style.display = "none") {
+							liArray[k].style.display = "block";						
+						}
+					}
+				}
+			}
+
+			//your friendly neighborhood event listeners
+			if (searchinput.addEventListener) {
+				searchinput.addEventListener("keyup", updateResults, false);
+			}
+			else if (searchinput.attachEvent) {
+				searchinput.attachEvent("onkeyup", updateResults);
+			}
+
+			//detect placeholder attribute support
+			function isPlaceholderSupported() {
+				var p = document.createElement("input");
+				return "placeholder" in p;
+			}
+			
+			if (!isPlaceholderSupported()) {
+				document.getElementById("souplabel").className = "crouchingtigress";
+			}
+
+    	})();
+    </script>
+
+	<!--Created: 2010 April 15-->
+	<!--
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-299058-9");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+	-->
+</body>
+</html>
